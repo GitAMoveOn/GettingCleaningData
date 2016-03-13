@@ -48,4 +48,4 @@ All files not listed above were descriptive/narrative in nature.
   1) Each variable forms a column  
   2) Each observation forms a row  
   3) Each type of observational unit forms a table  
-  The only thing it might violate is #2, in that the different measurements are columns in the output.  It can be argued that I could   create a "measurement" column to house the label, and a "value" column to house the actual values.  
+
