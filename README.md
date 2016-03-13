@@ -44,8 +44,8 @@ All files not listed above were descriptive/narrative in nature.
 - For activity, once I figure out which file/variable it was (ytest/train.txt), I called it activitylabel, once I merged on activity_labels to get them.
 - Though it wasn't needed in actual output, I created a variable "test_flg" to differentiate where data came from once I merged everything into one data.frame/table.
 - I also merged the files from the\Inertial Signals folders, though, again, ended up not needing it and actually having to ignore the work that went into doing it.  Wasn't perfect anyway since it was still a pivoted, so not 'tidy'.
-- In summary, i believe the output is tidy for the most part according to these three principles of tidy data:
-  1) Each variable forms a column
-  2) Each observation forms a row
-  3) Each type of observational unit forms a table
+- In summary, i believe the output is tidy for the most part according to these three principles of tidy data:  
+  1) Each variable forms a column  
+  2) Each observation forms a row  
+  3) Each type of observational unit forms a table  
   The only thing it might violate is #2, in that the different measurements are columns in the output.  It can be argued that I could   create a "measurement" column to house the label, and a "value" column to house the actual values.  
