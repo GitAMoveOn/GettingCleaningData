@@ -79,14 +79,14 @@ dir()
 currfiles <- dir()
 
 for( i in 1:length(currfiles) ) {
-   print(currfiles[i])
-
+  print(currfiles[i])
+  
   if( file_ext( currfiles[i] ) == "" ) {
     
   } else {
-      temp <- read.table( currfiles[i] )
-      assign( gsub( "_", "", strsplit( currfiles[i], ".txt") ), temp )
-      rm( temp )
+    temp <- read.table( currfiles[i] )
+    assign( gsub( "_", "", strsplit( currfiles[i], ".txt") ), temp )
+    rm( temp )
   }
 }
 
@@ -238,7 +238,7 @@ for( i in 1:length( dflist ) ) {
     names(temp)[j] <- paste0( strsplit(dflist[i],"test"), "obs", str_pad( j, 3, pad="0") )
   }  
   assign( dflist[i], temp )
-
+  
   test <- cbind( test, get(dflist[i]) )
   
 }
@@ -360,32 +360,35 @@ dim( alldatstd )
 # Now make a useable table with just the relevant columns
 names( alldat )[ 1:29 ]
 
-### ASSIGNMENT OUTPUT
 alldatuse <- cbind( alldat[2:3], alldatmean, alldatstd ) # I really won't need test vs. train
 
 # clean up
 rm( alldatmean )
 rm( alldatstd )
 
+
+# Will use tables from dplyr to make summarization easier :)
+tblalldat <- tbl_df( alldatuse )
+dim( tblalldat )
+head(tblalldat)
+
+### ASSIGNMENT OUTPUT
+tblalldattidy <- gather( tblalldat, measurement, value, -( c( subjectid, activitylabel ) ) )
+
 # checks
-head(alldatuse)
-dim(alldatuse)
-head(alldatuse[,1:3])
+head(tblalldattidy)
+dim(tblalldattidy)
 
 #---------------------------------------------------------------------------------------------------------------------- 
 #---------------------------------------------------------------------------------------------------------------------- 
 # 7 - 2ND ASSIGNMENT OUTPUT
 # "Create a second, independent tidy data set with the average of each variable for each activity and each subject."
 
-# Will use tables from dplyr to make summarization easier :)
-tblalldat <- tbl_df( alldatuse )
-head(tblalldat)
-
-bysubact <- group_by( tblalldat, subjectid, activitylabel )
+bysubact <- group_by( tblalldattidy, subjectid, activitylabel, measurement )
 head( bysubact )
 
 ### ASSIGNMENT OUTPUT
-bysubactsmry <- summarize_each( bysubact, funs(mean) )
+bysubactsmry <- summarize( bysubact, mean(value) )
 
 # checks
 dim( bysubactsmry )
