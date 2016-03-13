@@ -1,3 +1,4 @@
 # GettingCleaningData
-Repo for files related to Getting and Cleaning Data Course.
-Hi.
+Repo for files related to Getting and Cleaning Data Course.  
+Test
+
