@@ -25,7 +25,7 @@ fBodyAccJerkMag
 fBodyGyroMag  
 fBodyGyroJerkMag  
 
-The actual signal-measurements:
+The actual signal-measurements:  
 1	tBodyAcc-mean()-X  
 2	tBodyAcc-mean()-Y  
 3	tBodyAcc-mean()-Z  
